@@ -1,4 +1,4 @@
-// Paysofter.js
+// index.js
 import React, { useEffect, useState } from "react";
 import {
   View,
@@ -24,7 +24,7 @@ export const Paysofter = ({
   paysofterPublicKey,
   onSuccess,
   onClose,
-  payment_id,
+  paymentRef,
   showFundOption,
   showCardOption,
   showPromiseOption,
@@ -42,7 +42,7 @@ export const Paysofter = ({
         const response = await axios.post(
           `${PAYSOFTER_API_URL}/api/get-api-key-status/`,
           {
-            public_api_key: paysofterPublicKey,
+            public_api_key: paysofterPublicKey, 
           }
         );
 
@@ -126,12 +126,12 @@ export const Paysofter = ({
         {apiKeyStatus === "live" && (
           <PaysofterButton
             amount={amount}
-            email={email}
+            email={email} 
             currency={currency}
             paysofterPublicKey={paysofterPublicKey}
             onSuccess={onSuccess}
             onClose={onClose}
-            payment_id={payment_id}
+            payment_id={paymentRef}
             showPaymentModal={showPaymentModal}
             setShowPaymentModal={setShowPaymentModal}
             showPromiseOption={showPromiseOption}

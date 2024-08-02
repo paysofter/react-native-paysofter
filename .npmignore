@@ -1,0 +1,13 @@
+node_modules
+public
+# webpack.config.js
+# babel.config.js
+*.test.js
+*.spec.js
+__tests__
+coverage
+*.log
+.DS_Store
+.env
+.vscode
+.gitignore

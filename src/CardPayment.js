@@ -11,7 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { Picker } from "@react-native-picker/picker";
 import { MONTH_CHOICES, YEAR_CHOICES } from "./payment-constants";
-import { Card } from "react-native-paper";
+import { Card } from "react-native-paper"; 
 import MessageFixed from "./MessageFixed";
 import Message from "./Message";
 import Loader from "./Loader";

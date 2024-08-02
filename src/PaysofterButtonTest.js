@@ -1,4 +1,4 @@
-// PaysofterButton.js
+// PaysofterButtonTest.js
 import React, { useState } from "react";
 import {
   View,
@@ -9,7 +9,7 @@ import {
   ScrollView,
   Image,
 } from "react-native";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome"; 
 import {
   faTimes,
   faCreditCard,
@@ -18,9 +18,9 @@ import {
   faMoneyBillWave,
 } from "@fortawesome/free-solid-svg-icons";
 import { Card } from "react-native-paper";
-import PaysofterPromise from "./PaysofterPromise";
-import CardPayment from "./CardPayment";
-import PaysofterAccountFund from "./PaysofterAccountFund";
+import PaysofterPromiseTest from "./PaysofterPromiseTest";
+import CardPaymentTest from "./CardPaymentTest";
+import PaysofterAccountFundTest from "./PaysofterAccountFundTest";
 import UssdPayment from "./UssdPayment";
 import BankPayment from "./BankPayment";
 import QrPayment from "./QrPayment";
@@ -29,7 +29,7 @@ import { formatAmount } from "./FormatAmount";
 import logoImage from "./images/logo.png";
 // import { styles } from "../PaysofterStyles";
 
-const PaysofterButton = ({
+const PaysofterButtonTest = ({
   amount,
   currency,
   email,
@@ -89,7 +89,10 @@ const PaysofterButton = ({
                 />
               </View>
               <Text style={styles.modalTitle}>
-                Paysofter <Text style={styles.liveMode}>Live</Text>
+                Paysofter{" "}
+                <Text style={styles.testMode}>
+                  <Text style={styles.testModetext}>Test</Text>
+                </Text>
               </Text>
               <Text>{email}</Text>
               <Text>{`${formatAmount(amount)} ${currency}`}</Text>
@@ -179,7 +182,7 @@ const PaysofterButton = ({
 
           <View style={styles.paymentDetails}>
             {selectedPaymentOption === "promise" && (
-              <PaysofterPromise
+              <PaysofterPromiseTest
                 amount={amount}
                 email={email}
                 currency={currency}
@@ -190,7 +193,7 @@ const PaysofterButton = ({
             )}
 
             {selectedPaymentOption === "card" && (
-              <CardPayment
+              <CardPaymentTest
                 amount={amount}
                 email={email}
                 currency={currency}
@@ -201,7 +204,7 @@ const PaysofterButton = ({
             )}
 
             {selectedPaymentOption === "fund" && (
-              <PaysofterAccountFund
+              <PaysofterAccountFundTest
                 amount={amount}
                 email={email}
                 currency={currency}
@@ -247,7 +250,6 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     fontSize: 18,
     textAlign: "center",
-    color: "#fff",
   },
   modalTitle: {
     fontSize: 24,
@@ -301,11 +303,11 @@ const styles = StyleSheet.create({
     width: 80,
     height: 40,
   },
-  // liveMode: {
+  // testMode: {
   //   position: "absolute",
   //   top: 8,
   //   right: 8,
-  //   backgroundColor: "green",
+  //   backgroundColor: "red",
   //   color: "white",
   //   borderRadius: 50,
   //   paddingVertical: 4,
@@ -313,9 +315,8 @@ const styles = StyleSheet.create({
   //   fontSize: 12,
   //   fontWeight: "bold",
   // },
-
-  liveMode: {
-    backgroundColor: "green",
+  testMode: {
+    backgroundColor: "red",
     color: "white",
     borderRadius: 20, 
     paddingVertical: 4,
@@ -324,7 +325,10 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     alignSelf: "flex-start", 
   },
-  
+  testModetext: {
+    color: "#fff",
+    fontSize: 12,
+  },
 });
 
-export default PaysofterButton;
+export default PaysofterButtonTest;
