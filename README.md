@@ -24,7 +24,7 @@ import { Paysofter } from "react-native-paysofter";
 
 const App = () => {
   const amount = 100; // Amount in USD, e.g., 100 USD
-  const paysofterPublicKey = "test_api_key_abc123"; // Replace with your actual public key
+  const paysofterPublicKey = "test_api_key_abc123"; // Replace with your actual Paysofter public key
 
   const handleSuccess = () => {
     console.log("Payment successful!");
@@ -42,7 +42,7 @@ const App = () => {
       paysofterPublicKey={paysofterPublicKey}
       onSuccess={handleSuccess}
       onClose={handleClose}
-      paymentRef={`PID${Math.floor(Math.random() * 100000000000000)}`}
+      paymentRef={`PID${Math.floor(Math.random() * 10000000000000000)}`}
       showPromiseOption={true}
       showFundOption={false}
       showCardOption={true}
@@ -65,7 +65,7 @@ const App = () => {
   const amount = 5000; // Amount in Nigerian Naira, e.g., NGN 5,000
   const currency = "NGN"; // Nigerian Naira
   const email = "buyer@example.com"; // Buyer's email
-  const paysofterPublicKey = "test_api_key_abc123"; // Replace with your actual public key
+  const paysofterPublicKey = "test_api_key_abc123"; // Replace with your actual Paysofter public key
 
   const handleSuccess = () => {
     console.log("Payment successful!");
@@ -89,7 +89,7 @@ const App = () => {
           paysofterPublicKey={paysofterPublicKey}
           onSuccess={handleSuccess}
           onClose={handleClose}
-          paymentRef={`PID${Math.floor(Math.random() * 100000000000000)}`}
+          paymentRef={`PID${Math.floor(Math.random() * 10000000000000000)}`}
           showPromiseOption={true}
           showFundOption={false}
           showCardOption={false}
@@ -109,11 +109,11 @@ import React, { useState } from "react";
 import {
   SafeAreaView,
   ScrollView,
-  StatusBar,
   View,
   Button,
   TextInput,
-  StyleSheet
+  StyleSheet,
+  Text,
 } from "react-native";
 import { Paysofter } from "react-native-paysofter";
 
@@ -122,7 +122,13 @@ const App = () => {
   const [amount, setAmount] = useState(5000); // Default amount
   const [currency, setCurrency] = useState("NGN"); // Default currency
   const [email, setEmail] = useState("buyer@example.com"); // Default email
-  const [paysofterPublicKey] = useState("test_api_key_abc123"); // Replace with your actual public key
+  const [paysofterPublicKey] = useState("test_api_key_abc123"); // Replace with your actual Paysofter public key
+  // const paymentRef = `PID${Math.floor(Math.random() * 10000000000000000)}`; // Generate a 17-digit random payment reference with PID prefix
+  const paymentRef = `PID${new Date()
+    .toISOString()
+    .slice(2, 19)
+    .replace(/[-T:]/g, "")}${Math.floor(Math.random() * 100000)}`; // Or generate a 17-digit payment reference with PID prefix starting with the timestamp and random numbers appended at the end.
+  console.log("paymentRef:", paymentRef);
 
   const handleSuccess = () => {
     console.log("Payment successful!");
@@ -136,9 +142,9 @@ const App = () => {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <StatusBar barStyle="dark-content" />
       <ScrollView contentContainerStyle={styles.scrollView}>
         <View style={styles.container}>
+          <Text style={styles.title}>Checkout</Text>
           {!showPayment ? (
             <>
               <TextInput
@@ -171,10 +177,10 @@ const App = () => {
               paysofterPublicKey={paysofterPublicKey}
               onSuccess={handleSuccess}
               onClose={handleClose}
-              paymentRef={PID${Math.floor(Math.random() * 100000000000000)}}
+              paymentRef={paymentRef}
               showPromiseOption={true}
-              showFundOption={false}
-              showCardOption={false}
+              showFundOption={true}
+              showCardOption={true}
             />
           )}
         </View>
@@ -199,6 +205,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: "100%",
   },
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+    textAlign: "center",
+    padding: 20,
+  },
   input: {
     height: 40,
     borderColor: "#ccc",
@@ -215,19 +227,18 @@ export default App;
 
 ## Props
 
-| Prop Name            | Type     | Description                                                       |
-| :------------------- | :------- | :---------------------------------------------------------------- |
-| `amount`             | Number   | The amount to be paid.                                            |
-| `currency`           | String   | The currency in which the payment is to be made (e.g., USD, NGN). |
-| `email`              | String   | The email address of the user making the payment.                 |
-| `paysofterPublicKey` | String   | Your Paysofter public key for processing the payment.             |
-| `onSuccess`          | Function | Callback function to handle the success of the payment.           |
-| `onClose`            | Function | Callback function to handle the closing of the payment window.    |
-| `paymentRef`         | String   | A unique identifier for the payment serving as a refrence.        |
-| `showPromiseOption`  | Boolean  | Whether to show the Promise payment option (default: true). If all options are delcared false then Promise payment option defaults to true.     |
-| `showFundOption`     | Boolean  | Whether to show the Fund Account payment option.                  |
-| `showCardOption`     | Boolean  | Whether to show the Card payment option.                          |                                                                                                   |     |
-
+| Prop Name            | Type     | Description                                                                                                                                 |
+| :------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------------ | --- | --- |
+| `amount`             | Number   | The amount to be paid.                                                                                                                      |
+| `currency`           | String   | The currency in which the payment is to be made (e.g., USD, NGN).                                                                           |
+| `email`              | String   | The email address of the user making the payment.                                                                                           |
+| `paysofterPublicKey` | String   | Your Paysofter public key for processing the payment.                                                                                       |
+| `onSuccess`          | Function | Callback function to handle the success of the payment.                                                                                     |
+| `onClose`            | Function | Callback function to handle the closing of the payment window.                                                                              |
+| `paymentRef`         | String   | A unique identifier for the payment serving as a refrence. Either generate a 17-digit random payment reference with PID prefix, or generate a 17-digit payment reference with PID prefix starting with a timestamp and a small random number appended at the end. Paysofter also generates a tarnsaction ID(TID) to reference every payment tarnsaction.                                                                                |
+| `showPromiseOption`  | Boolean  | Whether to show the Promise payment option (default: true). If all options are delcared false then Promise payment option defaults to true. |
+| `showFundOption`     | Boolean  | Whether to show the Fund Account payment option.                                                                                            |
+| `showCardOption`     | Boolean  | Whether to show the Card payment option.                                                                                                    |     |     |
 
 ## Contributing to the Project
 
@@ -248,4 +259,4 @@ export default App;
 
 ## Additional Configuration Options
 
-For further configuration options, please refer to the [Paysofter Documentation](https://paysofter.com/docs).
+For further configuration options, please refer to the [Paysofter Documentation](https://paysofter.com/docs/).

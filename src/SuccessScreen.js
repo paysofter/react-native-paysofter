@@ -1,37 +1,40 @@
-// ConfirmPaysofterPromise.js
+// SuccessScreen.js
 import React from "react";
 import {
   View,
   Text,
-  TouchableOpacity,
+  // TouchableOpacity,
   StyleSheet,
-  Linking,
+  // Linking,
 } from "react-native";
 import { Card } from "react-native-paper";
+import MessageFixed from "./MessageFixed";
 
-const ConfirmPaysofterPromise = () => {
-  const handleConfirmPromise = () => {
-    Linking.openURL("https://paysofter.com/promise/buyer"); 
-  };
+const SuccessScreen = () => {
+  // const handleClose = () => {
+  //   Linking.openURL("https://paysofter.com/");
+  // };
 
   return (
     <View style={styles.container}>
       <Card style={styles.card}>
         <Card.Content>
           <View style={styles.innerContainer}>
-            <Text style={styles.title}>Promise successfully created!</Text>
+            <MessageFixed variant="success">
+              Transaction successful!
+            </MessageFixed>
+            <Text style={styles.title}>Successful!</Text>
             <Text style={styles.description}>
-              Is Promise fulfilled? Check your email or login to your Paysofter
-              account to check out the Promise status to confirm.
+              Payment created successfully!
             </Text>
 
-            <View style={styles.formGroup}>
-              <TouchableOpacity onPress={handleConfirmPromise}>
+            {/* <View style={styles.formGroup}>
+              <TouchableOpacity onPress={handleClose}>
                 <Text style={styles.roundedPrimaryBtn}>
-                  Confirm Promise (at Paysofter)
+                  Close
                 </Text>
               </TouchableOpacity>
-            </View>
+            </View> */}
           </View>
         </Card.Content>
       </Card>
@@ -84,4 +87,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ConfirmPaysofterPromise;
+export default SuccessScreen;
