@@ -109,7 +109,7 @@ const VerifyAccountFundOtpTest = ({
       setHasHandledSuccess(true);
       handleOnSuccess();
       setTimeout(() => {
-        handleOnClose();
+        // handleOnClose();
         setShowSuccessMessage(false);
         setShowSuccessScreen(true);
       }, 3000);
@@ -153,9 +153,9 @@ const VerifyAccountFundOtpTest = ({
     onSuccess();
   }, [onSuccess]);
 
-  const handleOnClose = useCallback(() => {
-    onClose();
-  }, [onClose]);
+  // const handleOnClose = useCallback(() => {
+  //   onClose();
+  // }, [onClose]);
 
   useEffect(() => {
     if (paymentSuccess && !hasHandledSuccess) {
@@ -163,9 +163,9 @@ const VerifyAccountFundOtpTest = ({
       setShowSuccessMessage(true);
       handleOnSuccess();
       setTimeout(() => {
+        setShowSuccessScreen(true);
         setShowSuccessMessage(false);
         AsyncStorage.removeItem("debitAccountData");
-        setShowSuccessScreen(true);
       }, 3000);
     }
   }, [paymentSuccess, handleOnSuccess, hasHandledSuccess]);

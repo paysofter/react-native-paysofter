@@ -130,7 +130,7 @@ const CardPaymentTest = ({
       setPaymentSuccess(true);
       setShowSuccessMessage(true);
       setTimeout(() => {
-        handleOnClose();
+        // handleOnClose();
         setShowSuccessMessage(false);
       }, 3000);
       handleOnSuccess();
@@ -149,9 +149,9 @@ const CardPaymentTest = ({
     onSuccess();
   }, [onSuccess]);
 
-  const handleOnClose = useCallback(() => {
-    onClose();
-  }, [onClose]);
+  // const handleOnClose = useCallback(() => {
+  //   onClose();
+  // }, [onClose]);
 
   useEffect(() => {
     if (paymentSuccess && !hasHandledSuccess) {
@@ -343,7 +343,7 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: "row",
     // alignItems: "center",
-    justifyContent: "end",
+    // justifyContent: "end",
   },
   roundedPrimaryBtn: {
     backgroundColor: "#007bff",

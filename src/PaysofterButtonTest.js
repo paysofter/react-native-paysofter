@@ -9,7 +9,7 @@ import {
   ScrollView,
   Image,
 } from "react-native";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome"; 
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import {
   faTimes,
   faCreditCard,
@@ -88,12 +88,12 @@ const PaysofterButtonTest = ({
                   resizeMode="contain"
                 />
               </View>
-              <Text style={styles.modalTitle}>
-                Paysofter{" "}
-                <Text style={styles.testMode}>
-                  <Text style={styles.testModetext}>Test</Text>
-                </Text>
-              </Text>
+
+              <View style={styles.titleContainer}>
+                <Text style={styles.modalTitle}>Paysofter</Text>
+                <Text style={styles.testMode}>Test</Text>
+              </View>
+
               <Text>{email}</Text>
               <Text>{`${formatAmount(amount)} ${currency}`}</Text>
             </Card.Content>
@@ -248,12 +248,9 @@ const styles = StyleSheet.create({
   },
   payBtnText: {
     alignSelf: "center",
-    fontSize: 18,
+    fontSize: 14,
     textAlign: "center",
-  },
-  modalTitle: {
-    fontSize: 24,
-    fontWeight: "bold",
+    color: "#fff",
   },
   options: {
     padding: 20,
@@ -303,31 +300,25 @@ const styles = StyleSheet.create({
     width: 80,
     height: 40,
   },
-  // testMode: {
-  //   position: "absolute",
-  //   top: 8,
-  //   right: 8,
-  //   backgroundColor: "red",
-  //   color: "white",
-  //   borderRadius: 50,
-  //   paddingVertical: 4,
-  //   paddingHorizontal: 8,
-  //   fontSize: 12,
-  //   fontWeight: "bold",
-  // },
+  titleContainer: {
+    flexDirection: "row",
+    // justifyContent: "center",
+    alignItems: "center",
+  },
+  modalTitle: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginRight: 5, // Add some space between title and liveMode
+  },
   testMode: {
     backgroundColor: "red",
     color: "white",
-    borderRadius: 20, 
+    borderRadius: 20,
     paddingVertical: 4,
     paddingHorizontal: 8,
     fontSize: 12,
     fontWeight: "bold",
-    alignSelf: "flex-start", 
-  },
-  testModetext: {
-    color: "#fff",
-    fontSize: 12,
+    overflow: "hidden", // Ensure the rounding takes effect
   },
 });
 

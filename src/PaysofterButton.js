@@ -27,7 +27,7 @@ import QrPayment from "./QrPayment";
 import TransferPayment from "./TransferPayment";
 import { formatAmount } from "./FormatAmount";
 import logoImage from "./images/logo.png";
-// import { styles } from "../PaysofterStyles"; 
+// import { styles } from "../PaysofterStyles";
 
 const PaysofterButton = ({
   amount,
@@ -88,9 +88,12 @@ const PaysofterButton = ({
                   resizeMode="contain"
                 />
               </View>
-              <Text style={styles.modalTitle}>
-                Paysofter <Text style={styles.liveMode}>Live</Text>
-              </Text>
+
+              <View style={styles.titleContainer}>
+                <Text style={styles.modalTitle}>Paysofter</Text>
+                <Text style={styles.liveMode}>Live</Text>
+              </View>
+
               <Text>{email}</Text>
               <Text>{`${formatAmount(amount)} ${currency}`}</Text>
             </Card.Content>
@@ -245,14 +248,14 @@ const styles = StyleSheet.create({
   },
   payBtnText: {
     alignSelf: "center",
-    fontSize: 18,
+    fontSize: 14,
     textAlign: "center",
     color: "#fff",
   },
-  modalTitle: {
-    fontSize: 24,
-    fontWeight: "bold",
-  },
+  // modalTitle: {
+  //   fontSize: 24,
+  //   fontWeight: "bold",
+  // },
   options: {
     padding: 20,
     alignItems: "center",
@@ -301,30 +304,26 @@ const styles = StyleSheet.create({
     width: 80,
     height: 40,
   },
-  // liveMode: {
-  //   position: "absolute",
-  //   top: 8,
-  //   right: 8,
-  //   backgroundColor: "green",
-  //   color: "white",
-  //   borderRadius: 50,
-  //   paddingVertical: 4,
-  //   paddingHorizontal: 8,
-  //   fontSize: 12,
-  //   fontWeight: "bold",
-  // },
-
+  titleContainer: {
+    flexDirection: "row",
+    // justifyContent: "center",
+    alignItems: "center",
+  },
+  modalTitle: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginRight: 5,
+  },
   liveMode: {
     backgroundColor: "green",
     color: "white",
-    borderRadius: 20, 
+    borderRadius: 20,
     paddingVertical: 4,
     paddingHorizontal: 8,
     fontSize: 12,
     fontWeight: "bold",
-    alignSelf: "flex-start", 
+    overflow: "hidden", // Ensure the rounding takes effect
   },
-  
 });
 
 export default PaysofterButton;

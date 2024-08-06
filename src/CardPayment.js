@@ -129,7 +129,7 @@ const CardPayment = ({
       setPaymentSuccess(true);
       setShowSuccessMessage(true);
       setTimeout(() => {
-        handleOnClose();
+        // handleOnClose();
         setShowSuccessMessage(false);
       }, 3000);
       handleOnSuccess();
@@ -148,9 +148,9 @@ const CardPayment = ({
     onSuccess();
   }, [onSuccess]);
 
-  const handleOnClose = useCallback(() => {
-    onClose();
-  }, [onClose]);
+  // const handleOnClose = useCallback(() => {
+  //   onClose();
+  // }, [onClose]);
 
   useEffect(() => {
     if (paymentSuccess && !hasHandledSuccess) {
@@ -231,7 +231,6 @@ const CardPayment = ({
               </View>
 
               <View style={styles.formGroup}>
-                <View style={styles.row}>
                   <Text style={styles.label}>CVV</Text>
                   <TextInput
                     style={styles.input}
@@ -261,7 +260,6 @@ const CardPayment = ({
                       )}
                     </Text>
                   </TouchableOpacity>
-                </View>
               </View>
             </View>
 
@@ -342,7 +340,7 @@ const styles = StyleSheet.create({
 
   row: {
     flexDirection: "row",
-    alignItems: "center",
+    // alignItems: "center",
   },
   errorContainer: {
     padding: 10,
