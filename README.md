@@ -4,6 +4,8 @@
 
 This is a React Native package for integrating Paysofter payment gateway into your React Native andriod and iOS applications.
 
+![Project Logo](./images/promise-live.jpg)
+
 ## Installation
 
 To install the package, run:
@@ -15,6 +17,8 @@ npm install react-native-paysofter
 ## Usage
 
 Here are basic examples of how to use the `react-native-paysofter` library in your React Native project.
+
+![Project Logo](./images/promise-test.jpg)
 
 ### Example 1: Basic Payment Setup
 
