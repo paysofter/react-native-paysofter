@@ -63,7 +63,7 @@ export const Paysofter = ({
         setError(
           error.response?.data?.detail ||
             error.message ||
-            "Error fetching API key status"
+            "Error fetching API key status. Check your network connectivity and try again."
         );
       } finally {
         setLoading(false);
