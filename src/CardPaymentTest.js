@@ -28,7 +28,9 @@ const CardPaymentTest = ({
   paysofterPublicKey,
   onSuccess,
   onClose,
-  payment_id,
+  referenceId,
+  buyerName,
+  buyerPhoneNumber,
 }) => {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [hasHandledSuccess, setHasHandledSuccess] = useState(false);
@@ -107,7 +109,9 @@ const CardPaymentTest = ({
     setError("");
 
     const paysofterPaymentData = {
-      payment_id: payment_id,
+      buyer_name: buyerName,
+      buyer_phone: buyerPhoneNumber,
+      payment_id: referenceId,
       buyer_email: email,
       currency: currency,
       amount: amount,

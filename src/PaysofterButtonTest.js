@@ -36,6 +36,9 @@ const PaysofterButtonTest = ({
   paysofterPublicKey,
   onSuccess,
   onClose,
+  referenceId,
+  buyerName,
+  buyerPhoneNumber,
   showPaymentModal,
   setShowPaymentModal,
   showFundOption,
@@ -200,6 +203,9 @@ const PaysofterButtonTest = ({
                 paysofterPublicKey={paysofterPublicKey}
                 onSuccess={onSuccess}
                 onClose={handleOnClosePayment}
+                referenceId={referenceId}
+                buyerName={buyerName}
+                buyerPhoneNumber={buyerPhoneNumber}
               />
             )}
 

@@ -27,7 +27,9 @@ const CardPayment = ({
   paysofterPublicKey,
   onSuccess,
   onClose,
-  payment_id,
+  referenceId,
+  buyerName,
+  buyerPhoneNumber,
 }) => {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [hasHandledSuccess, setHasHandledSuccess] = useState(false);
@@ -106,7 +108,9 @@ const CardPayment = ({
     setError("");
 
     const paysofterPaymentData = {
-      payment_id: payment_id,
+      buyer_name: buyerName,
+      buyer_phone: buyerPhoneNumber,
+      payment_id: referenceId,
       buyer_email: email,
       currency: currency,
       amount: amount,
@@ -231,35 +235,35 @@ const CardPayment = ({
               </View>
 
               <View style={styles.formGroup}>
-                  <Text style={styles.label}>CVV</Text>
-                  <TextInput
-                    style={styles.input}
-                    value={paymentDetails.cvv}
-                    onChangeText={(value) =>
-                      handlePaymentDetailsChange("cvv", value)
-                    }
-                    placeholder="123"
-                    maxLength={3}
-                    keyboardType="numeric"
-                    secureTextEntry={!cvvVisible}
-                  />
-                  <TouchableOpacity onPress={toggleCvvVisibility}>
-                    <Text>
-                      {cvvVisible ? (
-                        <FontAwesomeIcon
-                          icon={faEyeSlash}
-                          size={16}
-                          style={styles.icon}
-                        />
-                      ) : (
-                        <FontAwesomeIcon
-                          icon={faEye}
-                          size={16}
-                          style={styles.icon}
-                        />
-                      )}
-                    </Text>
-                  </TouchableOpacity>
+                <Text style={styles.label}>CVV</Text>
+                <TextInput
+                  style={styles.input}
+                  value={paymentDetails.cvv}
+                  onChangeText={(value) =>
+                    handlePaymentDetailsChange("cvv", value)
+                  }
+                  placeholder="123"
+                  maxLength={3}
+                  keyboardType="numeric"
+                  secureTextEntry={!cvvVisible}
+                />
+                <TouchableOpacity onPress={toggleCvvVisibility}>
+                  <Text>
+                    {cvvVisible ? (
+                      <FontAwesomeIcon
+                        icon={faEyeSlash}
+                        size={16}
+                        style={styles.icon}
+                      />
+                    ) : (
+                      <FontAwesomeIcon
+                        icon={faEye}
+                        size={16}
+                        style={styles.icon}
+                      />
+                    )}
+                  </Text>
+                </TouchableOpacity>
               </View>
             </View>
 
