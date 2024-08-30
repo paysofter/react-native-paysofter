@@ -11,7 +11,7 @@ import {
   ScrollView,
   Linking,
 } from "react-native";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome"; 
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import {
   faInfoCircle,
   faEye,
@@ -31,6 +31,9 @@ const PaysofterAccountFund = ({
   amount,
   email,
   paysofterPublicKey,
+  referenceId,
+  qty,
+  productName,
   duration,
   currency,
   onSuccess,
@@ -115,6 +118,9 @@ const PaysofterAccountFund = ({
               currency={currency}
               email={email}
               paysofterPublicKey={paysofterPublicKey}
+              referenceId={referenceId}
+              qty={qty}
+              productName={productName}
               securityCode={securityCode}
               accountId={accountId}
               formattedPayerEmail={formattedPayerEmail}

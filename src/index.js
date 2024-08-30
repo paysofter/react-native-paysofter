@@ -25,6 +25,8 @@ export const Paysofter = ({
   onSuccess,
   onClose,
   referenceId,
+  qty,
+  productName,
   buyerName,
   buyerPhoneNumber,
   showFundOption,
@@ -134,6 +136,8 @@ export const Paysofter = ({
             onSuccess={onSuccess}
             onClose={onClose}
             referenceId={referenceId}
+            qty={qty}
+            productName={productName}
             buyerName={buyerName}
             buyerPhoneNumber={buyerPhoneNumber}
             showPaymentModal={showPaymentModal}
@@ -152,6 +156,8 @@ export const Paysofter = ({
             onSuccess={onSuccess}
             onClose={onClose}
             referenceId={referenceId}
+            qty={qty}
+            productName={productName}
             buyerName={buyerName}
             buyerPhoneNumber={buyerPhoneNumber}
             showPaymentModal={showPaymentModal}

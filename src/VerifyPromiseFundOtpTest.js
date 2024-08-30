@@ -23,6 +23,9 @@ const VerifyPromiseFundOtpTest = ({
   email,
   amount,
   paysofterPublicKey,
+  qty,
+  productName,
+  referenceId,
   formattedPayerEmail,
   currency,
   duration,
@@ -71,6 +74,9 @@ const VerifyPromiseFundOtpTest = ({
     email: email,
     amount: amount,
     public_api_key: paysofterPublicKey,
+    qty: qty,
+    product_name: productName,
+    reference_id: referenceId,
     account_id: sendOtpData?.account_id,
     buyer_email: email,
     currency: currency,
@@ -186,7 +192,7 @@ const VerifyPromiseFundOtpTest = ({
                 color="#28a745"
               />
               <Text style={styles.infoText}>
-               OTP has been automatically generated for testing purposes.
+                OTP has been automatically generated for testing purposes.
               </Text>
               <TouchableOpacity
                 onPress={handleResendEmailOtp}

@@ -31,6 +31,9 @@ const PaysofterPromiseFundTest = ({
   email,
   amount,
   paysofterPublicKey,
+  referenceId,
+  qty,
+  productName,
   duration,
   currency,
   onSuccess,
@@ -145,6 +148,9 @@ const PaysofterPromiseFundTest = ({
                 email={email}
                 currency={currency}
                 paysofterPublicKey={paysofterPublicKey}
+                referenceId={referenceId}
+                qty={qty}
+                productName={productName}
                 duration={duration}
                 onSuccess={onSuccess}
                 onClose={onClose}

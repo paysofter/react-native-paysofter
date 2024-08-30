@@ -32,6 +32,9 @@ const PaysofterAccountFundTest = ({
   amount,
   email,
   paysofterPublicKey,
+  referenceId,
+  qty,
+  productName,
   duration,
   currency,
   onSuccess,
@@ -116,6 +119,9 @@ const PaysofterAccountFundTest = ({
               currency={currency}
               email={email}
               paysofterPublicKey={paysofterPublicKey}
+              referenceId={referenceId}
+              qty={qty}
+              productName={productName}
               securityCode={securityCode}
               accountId={accountId}
               formattedPayerEmail={formattedPayerEmail}
@@ -293,13 +299,13 @@ const PaysofterAccountFundTest = ({
               </Modal>
 
               <View style={styles.submitContainer}>
-                <TouchableOpacity 
-                onPress={submitHandler}
-                style={
-                  loading || success
-                    ? styles.roundedDisabledBtn
-                    : styles.roundedPrimaryBtn
-                }
+                <TouchableOpacity
+                  onPress={submitHandler}
+                  style={
+                    loading || success
+                      ? styles.roundedDisabledBtn
+                      : styles.roundedPrimaryBtn
+                  }
                 >
                   <Text style={styles.btnText}>{`Pay (${formatAmount(
                     amount
