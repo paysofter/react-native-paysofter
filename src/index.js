@@ -8,11 +8,11 @@ import {
   Modal,
   TouchableOpacity,
 } from "react-native";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome"; 
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import PaysofterButton from "./PaysofterButton";
-import PaysofterButtonTest from "./PaysofterButtonTest";
+import PaysofterButtonTest from "./PaysofterButtonTest"; 
 import Loader from "./Loader";
 import MessageFixed from "./MessageFixed";
 import { PAYSOFTER_API_URL } from "./config/apiConfig";

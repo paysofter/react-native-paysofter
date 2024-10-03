@@ -217,14 +217,14 @@ const VerifyAccountFundPromiseOtp = ({
     if (promiseSuccess && !hasHandledSuccess) {
       setHasHandledSuccess(true);
       setShowSuccessMessage(true);
-      handleOnSuccess();
+      // handleOnSuccess();
       setTimeout(() => {
         setShowConfirmPaysofterPromise(true);
         setShowSuccessMessage(false);
         AsyncStorage.removeItem("debitAccountData");
       }, 3000);
     }
-  }, [promiseSuccess, handleOnSuccess, hasHandledSuccess]);
+  }, [promiseSuccess, hasHandledSuccess]);
 
   return (
     <ScrollView contentContainerStyle={styles.container}>

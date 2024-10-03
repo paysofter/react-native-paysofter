@@ -167,14 +167,14 @@ const VerifyAccountFundOtpTest = ({
     if (paymentSuccess && !hasHandledSuccess) {
       setHasHandledSuccess(true);
       setShowSuccessMessage(true);
-      handleOnSuccess();
+      // handleOnSuccess();
       setTimeout(() => {
         setShowSuccessScreen(true);
         setShowSuccessMessage(false);
         AsyncStorage.removeItem("debitAccountData");
       }, 3000);
     }
-  }, [paymentSuccess, handleOnSuccess, hasHandledSuccess]);
+  }, [paymentSuccess, hasHandledSuccess]);
 
   return (
     <View style={styles.container}>
