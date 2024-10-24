@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Card } from "react-native-paper";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import AsyncStorage from "@react-native-async-storage/async-storage"; 
 import Message from "./Message";
 import MessageFixed from "./MessageFixed";
 import Loader from "./Loader";
@@ -66,28 +66,36 @@ const VerifyAccountFundOtp = ({
   const otpData = {
     otp: otp,
     account_id: sendOtpData?.account_id,
-    amount: amount,
+    amount: sendOtpData?.amount,
+    // amount: amount,
     currency: currency,
     public_api_key: paysofterPublicKey,
   };
 
   const paysofterPaymentData = {
-    buyer_email: email,
-    amount: amount,
-    currency: currency,
-    public_api_key: paysofterPublicKey,
+    buyer_email: sendOtpData?.email,
+    amount: sendOtpData?.amount,
+    currency: sendOtpData?.currency,
+    account_id: sendOtpData?.account_id,
+    public_api_key: sendOtpData?.public_api_key,
+    // buyer_email: email,
+    // amount: amount,
+    // currency: currency,
+    // public_api_key: paysofterPublicKey,
     qty: qty,
     product_name: productName,
     reference_id: referenceId,
     created_at: createdAt,
     payment_method: paymentMethod,
-    account_id: sendOtpData?.account_id,
   };
+
+  // console.log('paysofterPaymentData:', paysofterPaymentData)
 
   const debitAccountData = {
     account_id: sendOtpData?.account_id,
     security_code: sendOtpData?.security_code,
-    amount: amount,
+    amount: sendOtpData?.amount,
+    // amount: amount,
     currency: currency,
     public_api_key: paysofterPublicKey,
   };

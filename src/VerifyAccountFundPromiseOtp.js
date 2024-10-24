@@ -124,13 +124,11 @@ const VerifyAccountFundPromiseOtp = ({
   const handleResendEmailOtp = async () => {
     setResendLoading(true);
     setResendMessage("");
-
     try {
       await axios.post(
         `${PAYSOFTER_API_URL}/api/send-debit-fund-account-otp/`,
         debitAccountData
       );
-
       setResendMessage(`OTP resent to ${formattedPayerEmail} successfully.`);
       setResendDisabled(true);
     } catch (error) {
@@ -159,25 +157,25 @@ const VerifyAccountFundPromiseOtp = ({
   }, [onSuccess]);
 
   useEffect(() => {
-    if (success) {
+    if (success && !hasHandledSuccess) {
       const createPaysofterPromise = async () => {
         setPromiseLoading(true);
         setPromiseError("");
-
         try {
           const paysofterPromiseData = {
-            email: email,
-            amount: amount,
-            public_api_key: paysofterPublicKey,
+            buyer_email: sendOtpData?.email,
+            amount: sendOtpData?.amount,
+            currency: sendOtpData?.currency,
+            account_id: sendOtpData?.account_id,
+            public_api_key: sendOtpData?.public_api_key,
             qty: qty,
             product_name: productName,
             reference_id: referenceId,
-            account_id: sendOtpData?.account_id,
-            currency: currency,
             duration: duration,
             created_at: createdAt,
             payment_method: paymentMethod,
           };
+          // console.log("paysofterPromiseData:", paysofterPromiseData);
 
           const { data } = await axios.post(
             `${PAYSOFTER_API_URL}/api/create-promise/`,
@@ -185,6 +183,14 @@ const VerifyAccountFundPromiseOtp = ({
           );
           console.log(data);
           setPromiseSuccess(true);
+          setHasHandledSuccess(true);
+          setShowSuccessMessage(true);
+          handleOnSuccess();
+          setTimeout(() => {
+            setShowConfirmPaysofterPromise(true);
+            setShowSuccessMessage(false);
+            AsyncStorage.removeItem("debitAccountData");
+          }, 3000);
         } catch (error) {
           setPromiseError(
             error.response && error.response.data.message
@@ -198,26 +204,12 @@ const VerifyAccountFundPromiseOtp = ({
 
       createPaysofterPromise();
     }
-  }, [
-    success,
-    email,
-    amount,
-    paysofterPublicKey,
-    qty,
-    productName,
-    referenceId,
-    sendOtpData?.account_id,
-    currency,
-    duration,
-    createdAt,
-    paymentMethod,
-  ]);
+  }, [success, hasHandledSuccess]);
 
   useEffect(() => {
     if (promiseSuccess && !hasHandledSuccess) {
       setHasHandledSuccess(true);
       setShowSuccessMessage(true);
-      // handleOnSuccess();
       setTimeout(() => {
         setShowConfirmPaysofterPromise(true);
         setShowSuccessMessage(false);

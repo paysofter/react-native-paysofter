@@ -74,17 +74,23 @@ const VerifyAccountFundOtpTest = ({
   };
 
   const paysofterPaymentData = {
-    buyer_email: email,
-    amount: amount,
-    currency: currency,
-    public_api_key: paysofterPublicKey,
+    buyer_email: sendOtpData?.email,
+    amount: sendOtpData?.amount,
+    currency: sendOtpData?.currency,
+    account_id: sendOtpData?.account_id,
+    public_api_key: sendOtpData?.public_api_key,
+    // buyer_email: email,
+    // amount: amount,
+    // currency: currency,
+    // public_api_key: paysofterPublicKey,
+    // account_id: sendOtpData?.account_id,
     qty: qty,
     product_name: productName,
     reference_id: referenceId,
     created_at: createdAt,
     payment_method: paymentMethod,
-    account_id: sendOtpData?.account_id,
   };
+  // console.log("paysofterPaymentData:", paysofterPaymentData);
 
   const handleVerifyEmailOtp = async () => {
     setLoading(true);
@@ -112,8 +118,8 @@ const VerifyAccountFundOtpTest = ({
       );
       setPaymentSuccess(true);
       setShowSuccessMessage(true);
-      setHasHandledSuccess(true);
-      handleOnSuccess();
+      // setHasHandledSuccess(true);
+      // handleOnSuccess();
       setTimeout(() => {
         // handleOnClose();
         setShowSuccessMessage(false);
@@ -167,14 +173,14 @@ const VerifyAccountFundOtpTest = ({
     if (paymentSuccess && !hasHandledSuccess) {
       setHasHandledSuccess(true);
       setShowSuccessMessage(true);
-      // handleOnSuccess();
+      handleOnSuccess();
       setTimeout(() => {
         setShowSuccessScreen(true);
         setShowSuccessMessage(false);
         AsyncStorage.removeItem("debitAccountData");
       }, 3000);
     }
-  }, [paymentSuccess, hasHandledSuccess]);
+  }, [paymentSuccess, hasHandledSuccess, handleOnSuccess]);
 
   return (
     <View style={styles.container}>

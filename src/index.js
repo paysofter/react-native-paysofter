@@ -12,10 +12,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import PaysofterButton from "./PaysofterButton";
-import PaysofterButtonTest from "./PaysofterButtonTest"; 
+import PaysofterButtonTest from "./PaysofterButtonTest";   
 import Loader from "./Loader";
 import MessageFixed from "./MessageFixed";
-import { PAYSOFTER_API_URL } from "./config/apiConfig";
+import { PAYSOFTER_API_URL } from "./config/apiConfig"; 
 
 export const Paysofter = ({
   amount,
@@ -38,6 +38,13 @@ export const Paysofter = ({
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(null);
+
+  console.log('apiKeyStatus:', apiKeyStatus)
+  console.log('amount:', amount)
+  console.log('currency:', currency)
+  console.log('paysofterPublicKey:', paysofterPublicKey)
+  console.log('PAYSOFTER_API_URL:', PAYSOFTER_API_URL)
+  console.log('email:', email)
 
   useEffect(() => {
     const fetchApiKeyStatus = async () => {
@@ -82,13 +89,15 @@ export const Paysofter = ({
       const timer = setTimeout(() => {
         setLoading(false);
         setError(null);
-      }, 100);
+      }, 1000);
       return () => clearTimeout(timer);
     }
   }, [success]);
 
   const handleClose = () => {
     setError(null);
+    setApiKeyStatus(null);
+    setShowPaymentModal(false);
     setLoading(false);
   };
 
@@ -99,7 +108,7 @@ export const Paysofter = ({
           visible={loading || !!error}
           transparent={true}
           animationType="slide"
-          onRequestClose={handleClose}
+          onRequestClose={handleClose}  
         >
           <View style={styles.modalBackground}>
             <View style={styles.modalContent}>

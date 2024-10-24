@@ -130,7 +130,7 @@ const CardPayment = ({
 
     try {
       const { data } = await axios.post(
-        `${PAYSOFTER_API_URL}/api/initiate-transaction/`,
+        `${PAYSOFTER_API_URL}/api/initiate-transaction/`, 
         paysofterPaymentData
       );
       console.log(data);

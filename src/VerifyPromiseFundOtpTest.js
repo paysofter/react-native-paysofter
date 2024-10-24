@@ -40,6 +40,7 @@ const VerifyPromiseFundOtpTest = ({
   const [showConfirmPaysofterPromiseTest, setShowConfirmPaysofterPromiseTest] =
     useState(false);
   const [hasHandledSuccess, setHasHandledSuccess] = useState(false);
+  
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [sendOtpData, setSendOtpData] = useState(null);
@@ -71,19 +72,26 @@ const VerifyPromiseFundOtpTest = ({
   }, []);
 
   const paysofterPromiseData = {
-    email: email,
-    amount: amount,
-    public_api_key: paysofterPublicKey,
+    // email: sendOtpData?.email,
+    buyer_email: sendOtpData?.email,
+    amount: sendOtpData?.amount,
+    currency: sendOtpData?.currency,
+    account_id: sendOtpData?.account_id,
+    public_api_key: sendOtpData?.public_api_key,
+    // email: email,
+    // buyer_email: email,
+    // currency: currency,
+    // amount: amount,
+    // account_id: sendOtpData?.account_id,
+    // public_api_key: paysofterPublicKey,
     qty: qty,
     product_name: productName,
     reference_id: referenceId,
-    account_id: sendOtpData?.account_id,
-    buyer_email: email,
-    currency: currency,
     duration: duration,
     created_at: createdAt,
     payment_method: paymentMethod,
   };
+  console.log("paysofterPromiseData:", paysofterPromiseData);
 
   const handleCreatePromise = async (paysofterPromiseData) => {
     try {
@@ -105,7 +113,6 @@ const VerifyPromiseFundOtpTest = ({
       setShowSuccessMessage(true);
       setHasHandledSuccess(true);
       handleOnSuccess();
-
       AsyncStorage.removeItem("debitAccountData");
     } catch (error) {
       setError(

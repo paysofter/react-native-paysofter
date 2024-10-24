@@ -70,7 +70,7 @@ const PaysofterAccountFund = ({
       security_code: securityCode,
       amount: amount,
       currency: currency,
-      public_api_key: paysofterPublicKey,
+      public_api_key: paysofterPublicKey, 
     };
 
     try {
