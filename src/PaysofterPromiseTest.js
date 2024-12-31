@@ -52,6 +52,14 @@ const PaysofterPromiseTest = ({
     setShowInfoModal(false);
   }, []);
 
+  const [showExpectedDurationInfoModal, setShowExpectedDurationInfoModal] = useState(false);
+  const handleExpectedDurationInfoModalShow = useCallback(() => {
+    setShowExpectedDurationInfoModal(true);
+  }, []);
+  const handleExpectedDurationInfoModalClose = useCallback(() => {
+    setShowExpectedDurationInfoModal(false);
+  }, []);
+
   const submitHandler = useCallback(
     (e) => {
       e.preventDefault();
@@ -126,6 +134,27 @@ const PaysofterPromiseTest = ({
                   </View>
                 </Modal>
 
+                <Modal
+                  visible={showExpectedDurationInfoModal}
+                  onRequestClose={handleExpectedDurationInfoModalClose}
+                  transparent={true}
+                  animationType="slide"
+                >
+                  <View style={styles.modalOverlay}>
+                    <View style={styles.modalContent}>
+                      <Text style={styles.modalTitle}>Expected Settlement Duration</Text>
+
+                      <Text style={styles.modalText}>
+                        This represents the seller's estimated fulfillment timeframe for the Promise order.
+                      </Text>
+                      <View style={styles.learnMoreBtn}>
+                        <Button title="Learn more" onPress={handleLearnMore} />
+                      </View>
+                      <Button title="Close" onPress={handleExpectedDurationInfoModalClose} />
+                    </View>
+                  </View>
+                </Modal>
+
                 <View style={styles.formGroup}>
                   <Text style={styles.label}>Currency</Text>
                   <TextInput
@@ -136,7 +165,18 @@ const PaysofterPromiseTest = ({
                 </View>
 
                 <View style={styles.formGroup}>
-                  <Text style={styles.label}>Expected Settlement Duration</Text>
+                  <View style={styles.headerContainer}>
+                    <View style={styles.labelContainer}>
+                      <Text style={styles.label}>Expected Settlement Duration </Text>
+                      <TouchableOpacity onPress={handleExpectedDurationInfoModalShow}>
+                        <FontAwesomeIcon
+                          icon={faInfoCircle}
+                          size={16}
+                          style={styles.icon}
+                        />
+                      </TouchableOpacity>
+                    </View>
+                  </View>
                   <View style={styles.selectContainer}>
                     <Picker
                       style={styles.picker}
@@ -233,10 +273,12 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 16,
+    textAlign: "center",
   },
   modalText: {
     fontSize: 16,
     marginBottom: 16,
+    textAlign: "center",
   },
   labelContainer: {
     flexDirection: "row",

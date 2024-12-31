@@ -397,6 +397,11 @@ const PaysofterPromiseFundTest = ({
                   </TouchableOpacity>
                 </View>
 
+
+                <View>
+              <Text style={styles.note}>Note: This is a test transaction; dummy payment details were automatically generated.</Text>
+            </View>
+
                 <View style={styles.errorContainer}>
                   {error && (
                     <MessageFixed variant="danger">{error}</MessageFixed>
@@ -484,6 +489,12 @@ const styles = StyleSheet.create({
   },
   errorContainer: {
     padding: 10,
+  },
+  note: {
+    color: "green",
+    fontSize: 12,
+    padding: 20,
+    textAlign: "center",
   },
   labelContainer: {
     flexDirection: "row",
