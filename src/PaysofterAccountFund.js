@@ -44,7 +44,7 @@ const PaysofterAccountFund = ({
   const [error, setError] = useState("");
   const [accountId, setAccountId] = useState("");
   const [securityCode, setSecurityCode] = useState("");
-  const [showInfoModal, setShowInfoModal] = useState(false);
+  const [showInfoModal, setShowInfoModal] = useState(false); 
   const [showAccountInfoModal, setShowAccountInfoModal] = useState(false);
   const [showSecurityCodeModal, setShowSecurityCodeModal] = useState(false);
   const [showVerifyAccountFundOtp, setShowVerifyAccountFundOtp] =
@@ -56,8 +56,7 @@ const PaysofterAccountFund = ({
   const handleAccountInfoModalClose = () => setShowAccountInfoModal(false);
   const handleSecurityCodeModalShow = () => setShowSecurityCodeModal(true);
   const handleSecurityCodeModalClose = () => setShowSecurityCodeModal(false);
-  const toggleSecurityCodeVisibility = () =>
-    setSecurityCodeVisible(!securityCodeVisible);
+  const toggleSecurityCodeVisibility = () => setSecurityCodeVisible(!securityCodeVisible);
   const handleInfoModalShow = () => setShowInfoModal(true);
   const handleInfoModalClose = () => setShowInfoModal(false);
 

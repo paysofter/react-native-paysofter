@@ -1,6 +1,6 @@
 {
   "name": "react-native-paysofter",
-  "version": "1.1.1",  
+  "version": "1.1.2",  
   "description": "This is a React Native package for integrating Paysofter payment gateway into your React Native application.",
   "main": "./src/index.js",
   "scripts": {
