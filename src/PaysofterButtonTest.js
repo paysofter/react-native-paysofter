@@ -33,6 +33,7 @@ const PaysofterButtonTest = ({
   amount,
   currency,
   email,
+  promises,
   paysofterPublicKey,
   onSuccess,
   onClose,
@@ -191,6 +192,7 @@ const PaysofterButtonTest = ({
                 amount={amount}
                 email={email}
                 currency={currency}
+                promises={promises}
                 paysofterPublicKey={paysofterPublicKey}
                 onSuccess={onSuccess}
                 onClose={handleOnClosePayment}

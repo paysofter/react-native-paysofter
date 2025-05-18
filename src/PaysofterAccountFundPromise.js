@@ -29,6 +29,7 @@ import axios from "axios";
 const PaysofterAccountFundPromise = ({
   email,
   amount,
+  promises,
   paysofterPublicKey,
   referenceId,
   qty,
@@ -135,6 +136,7 @@ const PaysofterAccountFundPromise = ({
       return () => clearTimeout(timer);
     }
   }, [success]);
+          console.log("PaysofterAccountFundPromise promises:", promises)
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -146,6 +148,7 @@ const PaysofterAccountFundPromise = ({
                 amount={amount}
                 email={email}
                 currency={currency}
+                promises={promises}
                 paysofterPublicKey={paysofterPublicKey}
                 referenceId={referenceId}
                 qty={qty}
@@ -169,7 +172,7 @@ const PaysofterAccountFundPromise = ({
                     <FontAwesomeIcon
                       icon={faInfoCircle}
                       size={16}
-                      // style={styles.icon}
+                    // style={styles.icon}
                     />
                   </TouchableOpacity>
                 </View>
@@ -222,7 +225,7 @@ const PaysofterAccountFundPromise = ({
                       <FontAwesomeIcon
                         icon={faInfoCircle}
                         size={16}
-                        // style={styles.icon}
+                      // style={styles.icon}
                       />
                     </TouchableOpacity>
                   </View>
@@ -247,7 +250,7 @@ const PaysofterAccountFundPromise = ({
                       <FontAwesomeIcon
                         icon={faInfoCircle}
                         size={16}
-                        // style={styles.icon}
+                      // style={styles.icon}
                       />
                     </TouchableOpacity>
                   </View>

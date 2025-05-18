@@ -21,6 +21,7 @@ import axios from "axios";
 const VerifyAccountFundPromiseOtp = ({
   email,
   amount,
+  promises,
   paysofterPublicKey,
   qty,
   productName,
@@ -77,26 +78,28 @@ const VerifyAccountFundPromiseOtp = ({
 
   const otpData = sendOtpData
     ? {
-        otp: otp,
-        account_id: sendOtpData?.account_id,
-        amount: amount,
-        currency: currency,
-        public_api_key: paysofterPublicKey,
-        created_at: createdAt,
-      }
+      otp: otp,
+      account_id: sendOtpData?.account_id,
+      amount: amount,
+      currency: currency,
+      promises: promises,
+      public_api_key: paysofterPublicKey,
+      created_at: createdAt,
+    }
     : {};
 
   const debitAccountData = sendOtpData
     ? {
-        account_id: sendOtpData?.account_id,
-        security_code: sendOtpData?.security_code,
-        amount: amount,
-        public_api_key: paysofterPublicKey,
-        qty: qty,
-        product_name: productName,
-        reference_id: referenceId,
-        created_at: createdAt,
-      }
+      account_id: sendOtpData?.account_id,
+      security_code: sendOtpData?.security_code,
+      amount: amount,
+      promises: promises,
+      public_api_key: paysofterPublicKey,
+      qty: qty,
+      product_name: productName,
+      reference_id: referenceId,
+      created_at: createdAt,
+    }
     : {};
 
   const handleVerifyEmailOtp = async () => {
@@ -168,6 +171,7 @@ const VerifyAccountFundPromiseOtp = ({
             currency: sendOtpData?.currency,
             account_id: sendOtpData?.account_id,
             public_api_key: sendOtpData?.public_api_key,
+            promises: promises,
             qty: qty,
             product_name: productName,
             reference_id: referenceId,
@@ -176,6 +180,7 @@ const VerifyAccountFundPromiseOtp = ({
             payment_method: paymentMethod,
           };
           // console.log("paysofterPromiseData:", paysofterPromiseData);
+          console.log("paysofterPromiseData promises:", promises)
 
           const { data } = await axios.post(
             `${PAYSOFTER_API_URL}/api/create-promise/`,
@@ -267,8 +272,8 @@ const VerifyAccountFundPromiseOtp = ({
                   {resendLoading
                     ? "Resending OTP..."
                     : resendDisabled
-                    ? `Resend OTP (${countdown}sec)`
-                    : "Resend OTP"}
+                      ? `Resend OTP (${countdown}sec)`
+                      : "Resend OTP"}
                 </Text>
               </TouchableOpacity>
             </View>

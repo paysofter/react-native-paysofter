@@ -22,6 +22,7 @@ const PaysofterPromiseTest = ({
   email,
   currency,
   amount,
+  promises,
   paysofterPublicKey,
   referenceId,
   qty,
@@ -88,6 +89,7 @@ const PaysofterPromiseTest = ({
                   amount={amount}
                   email={email}
                   currency={currency}
+                  promises={promises}
                   paysofterPublicKey={paysofterPublicKey}
                   referenceId={referenceId}
                   qty={qty}

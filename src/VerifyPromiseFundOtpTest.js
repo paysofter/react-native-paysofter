@@ -22,6 +22,7 @@ import axios from "axios";
 const VerifyPromiseFundOtpTest = ({
   email,
   amount,
+  promises,
   paysofterPublicKey,
   qty,
   productName,
@@ -40,7 +41,7 @@ const VerifyPromiseFundOtpTest = ({
   const [showConfirmPaysofterPromiseTest, setShowConfirmPaysofterPromiseTest] =
     useState(false);
   const [hasHandledSuccess, setHasHandledSuccess] = useState(false);
-  
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [sendOtpData, setSendOtpData] = useState(null);
@@ -77,6 +78,7 @@ const VerifyPromiseFundOtpTest = ({
     amount: sendOtpData?.amount,
     currency: sendOtpData?.currency,
     account_id: sendOtpData?.account_id,
+    promises: promises,
     public_api_key: sendOtpData?.public_api_key,
     // email: email,
     // buyer_email: email,
@@ -117,8 +119,8 @@ const VerifyPromiseFundOtpTest = ({
     } catch (error) {
       setError(
         error.response?.data?.detail ||
-          error.message ||
-          "Error creating promise"
+        error.message ||
+        "Error creating promise"
       );
     } finally {
       setLoading(false);
@@ -210,8 +212,8 @@ const VerifyPromiseFundOtpTest = ({
                   {resendLoading
                     ? "Resending OTP..."
                     : resendDisabled
-                    ? `Resend OTP (${countdown}sec)`
-                    : "Resend OTP"}
+                      ? `Resend OTP (${countdown}sec)`
+                      : "Resend OTP"}
                 </Text>
               </TouchableOpacity>
             </View>

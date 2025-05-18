@@ -8,19 +8,20 @@ import {
   Modal,
   TouchableOpacity,
 } from "react-native";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome"; 
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import PaysofterButton from "./PaysofterButton";
-import PaysofterButtonTest from "./PaysofterButtonTest";   
+import PaysofterButtonTest from "./PaysofterButtonTest";
 import Loader from "./Loader";
 import MessageFixed from "./MessageFixed";
-import { PAYSOFTER_API_URL } from "./config/apiConfig"; 
+import { PAYSOFTER_API_URL } from "./config/apiConfig";
 
 export const Paysofter = ({
   amount,
   currency,
   email,
+  promises,
   paysofterPublicKey,
   onSuccess,
   onClose,
@@ -43,8 +44,9 @@ export const Paysofter = ({
   console.log('amount:', amount)
   console.log('currency:', currency)
   console.log('paysofterPublicKey:', paysofterPublicKey)
-  console.log('PAYSOFTER_API_URL:', PAYSOFTER_API_URL)
-  console.log('email:', email)
+  // console.log('PAYSOFTER_API_URL:', PAYSOFTER_API_URL)
+  // console.log('email:', email)
+  console.log("promises:", promises)
 
   useEffect(() => {
     const fetchApiKeyStatus = async () => {
@@ -73,8 +75,8 @@ export const Paysofter = ({
       } catch (error) {
         setError(
           error.response?.data?.detail ||
-            error.message ||
-            "Error fetching API key status. Check your network connectivity and try again."
+          error.message ||
+          "Error fetching API key status. Check your network connectivity and try again."
         );
       } finally {
         setLoading(false);
@@ -108,7 +110,7 @@ export const Paysofter = ({
           visible={loading || !!error}
           transparent={true}
           animationType="slide"
-          onRequestClose={handleClose}  
+          onRequestClose={handleClose}
         >
           <View style={styles.modalBackground}>
             <View style={styles.modalContent}>
@@ -120,7 +122,7 @@ export const Paysofter = ({
                   icon={faTimes}
                   size={24}
                   style={styles.icon}
-                  // color="red"
+                // color="red"
                 />
                 {/* <Text style={styles.closeButtonTex}> Close</Text> */}
               </TouchableOpacity>
@@ -141,6 +143,7 @@ export const Paysofter = ({
             amount={amount}
             email={email}
             currency={currency}
+            promises={promises}
             paysofterPublicKey={paysofterPublicKey}
             onSuccess={onSuccess}
             onClose={onClose}
@@ -161,6 +164,7 @@ export const Paysofter = ({
             amount={amount}
             email={email}
             currency={currency}
+            promises={promises}
             paysofterPublicKey={paysofterPublicKey}
             onSuccess={onSuccess}
             onClose={onClose}

@@ -33,6 +33,7 @@ const PaysofterButton = ({
   amount,
   currency,
   email,
+  promises,
   paysofterPublicKey,
   onSuccess,
   onClose,
@@ -67,6 +68,7 @@ const PaysofterButton = ({
     setShowPaymentModal(false);
     onClose();
   };
+  console.log("promises:", promises)
 
   return (
     <View>
@@ -191,6 +193,7 @@ const PaysofterButton = ({
                 amount={amount}
                 email={email}
                 currency={currency}
+                promises={promises}
                 paysofterPublicKey={paysofterPublicKey}
                 onSuccess={onSuccess}
                 onClose={handleOnClosePayment}

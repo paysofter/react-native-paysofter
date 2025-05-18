@@ -30,6 +30,7 @@ import { generateRandomNum } from "./GenerateRandomNum";
 const PaysofterPromiseFundTest = ({
   email,
   amount,
+  promises,
   paysofterPublicKey,
   referenceId,
   qty,
@@ -147,6 +148,7 @@ const PaysofterPromiseFundTest = ({
                 amount={amount}
                 email={email}
                 currency={currency}
+                promises={promises}
                 paysofterPublicKey={paysofterPublicKey}
                 referenceId={referenceId}
                 qty={qty}
@@ -156,7 +158,7 @@ const PaysofterPromiseFundTest = ({
                 onClose={onClose}
                 securityCode={securityCode}
                 accountId={accountId}
-                // formattedPayerEmail={formattedPayerEmail}
+              // formattedPayerEmail={formattedPayerEmail}
               />
             </>
           ) : (
@@ -170,7 +172,7 @@ const PaysofterPromiseFundTest = ({
                     <FontAwesomeIcon
                       icon={faInfoCircle}
                       size={16}
-                      // style={styles.icon}
+                    // style={styles.icon}
                     />
                   </TouchableOpacity>
                 </View>
@@ -223,7 +225,7 @@ const PaysofterPromiseFundTest = ({
                       <FontAwesomeIcon
                         icon={faInfoCircle}
                         size={16}
-                        // style={styles.icon}
+                      // style={styles.icon}
                       />
                     </TouchableOpacity>
                   </View>
@@ -249,7 +251,7 @@ const PaysofterPromiseFundTest = ({
                       <FontAwesomeIcon
                         icon={faInfoCircle}
                         size={16}
-                        // style={styles.icon}
+                      // style={styles.icon}
                       />
                     </TouchableOpacity>
                   </View>
@@ -399,8 +401,8 @@ const PaysofterPromiseFundTest = ({
 
 
                 <View>
-              <Text style={styles.note}>Note: This is a test transaction; dummy payment details were automatically generated.</Text>
-            </View>
+                  <Text style={styles.note}>Note: This is a test transaction; dummy payment details were automatically generated.</Text>
+                </View>
 
                 <View style={styles.errorContainer}>
                   {error && (
